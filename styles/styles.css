@@ -1,11 +1,11 @@
 :root {
-  --primary_color: #733fc8;
-  --secondary_color: #48556a;
+  --primary-color: #1400ff;
+  --secondary-color: #48556a;
   --white: #fff;
   --black: #000;
   --body-bg: #f3f3f3;
-  --main_font: 'Lexend Deca';
-  --secondary_font: 'Big Shoulders Display';
+  --main-font: 'lexend deca';
+  --secondary-font: 'big shoulders display';
   --font-size: 16px;
   --padding: 20px;
   --container: 1170px;
@@ -20,7 +20,7 @@
 
 :active,
 :focus {
-  outline-color: var(--main_color);
+  outline-color: var(--main-color);
 }
 
 html,
@@ -30,7 +30,7 @@ body {
 }
 
 body {
-  font-family: var(--main_font);
+  font-family: var(--main-font);
   font-size: var(--font-size);
   font-weight: 400;
   font-size: 16px;
@@ -106,5 +106,111 @@ button {
   max-width: var(--container);
 
   border: 3px solid orange;
+}
+
+section.hero {
+  display: flex;
+  place-content: center center;
+  flex-wrap: wrap;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 455px;
+  height: 515px;
+  font-weight: 500;
+}
+
+.field {
+  position: relative;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  height: 64px;
+  padding: 0 50px 0 20px;
+  font-size: 24px;
+  line-height: 1.16;
+  border: 2px solid #d5d5d5;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="submit"] {
+  font-size: 18px;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+input[type="submit"]:focus {
+  border-color: skyblue;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: var(--primary-color);
+}
+
+label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  padding: 0 12px;
+  font-size: 18px;
+  color: var(--primary-color);
+  border-left-color: var(--white);
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+input[type="text"]:focus + label,
+input[type="email"]:focus + label,
+input[type="password"]:focus + label {
+  top: 0;
+  font-size: 14px;
+  background-color: var(--white);
+}
+
+
+.show-hide {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background-image: url('../assets/images/icons/show.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.show .show-hide {
+  background-image: url('../assets/images/icons/hide.svg');
+}
+
+.error, .success {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  transform: translate(20px, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
 }
 
