@@ -1,6 +1,6 @@
 :root {
   --primary-color: #1400ff;
-  --secondary-color: #48556a;
+  --grey: #d5d5d5;
   --white: #fff;
   --black: #000;
   --body-bg: #f3f3f3;
@@ -8,7 +8,7 @@
   --secondary-font: 'big shoulders display';
   --font-size: 16px;
   --padding: 20px;
-  --container: 1170px;
+  --container: 1200px;
   --anime: 0.5s, ease;
 }
 
@@ -94,24 +94,18 @@ button {
   flex: 1 1 auto;
 }
 
-/* .container {
-  margin: 0 auto;
-  max-width: var(--container);
-  padding: 0 var(--padding);
-} */
-
 .container {
   margin: 0 auto;
   width: calc(100% - (var(--padding) * 2));
   max-width: var(--container);
-
   border: 3px solid orange;
 }
 
 section.hero {
   display: flex;
-  place-content: center center;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 form {
@@ -119,7 +113,7 @@ form {
   flex-direction: column;
   gap: 20px;
   width: 455px;
-  height: 515px;
+  height: auto;
   font-weight: 500;
 }
 
@@ -127,35 +121,32 @@ form {
   position: relative;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="submit"] {
+input {
   width: 100%;
-  height: 64px;
+  height: 4rem;
   padding: 0 50px 0 20px;
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 1.16;
-  border: 2px solid #d5d5d5;
+  border: 2px solid var(--grey);
   border-radius: 4px;
   outline: none;
 }
-
-input[type="submit"] {
+input:not([type='submit']):focus {
+  border-color: var(--primary-color);
+}
+input:not([type='submit']):focus + label {
+  top: 0;
+  font-size: 14px;
+  background-color: var(--white);
+}
+input[type='submit'] {
   font-size: 18px;
   color: var(--white);
   background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
-
-input[type="submit"]:focus {
+input[type='submit']:focus {
   border-color: skyblue;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: var(--primary-color);
 }
 
 label {
@@ -171,16 +162,7 @@ label {
   pointer-events: none;
 }
 
-input[type="text"]:focus + label,
-input[type="email"]:focus + label,
-input[type="password"]:focus + label {
-  top: 0;
-  font-size: 14px;
-  background-color: var(--white);
-}
-
-
-.show-hide {
+.eye {
   position: absolute;
   top: 50%;
   right: 0;
@@ -191,20 +173,20 @@ input[type="password"]:focus + label {
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.show .show-hide {
+.show .eye {
   background-image: url('../assets/images/icons/hide.svg');
 }
 
-.error, .success {
+.error,
+.success {
   position: absolute;
-  top: 0%;
+  top: 50%;
   left: 100%;
-  transform: translate(20px, 50%);
+  transform: translate(20px, -50%);
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 16px;
+  width: 100%;
   font-size: 14px;
 }
 .error {
@@ -213,4 +195,8 @@ input[type="password"]:focus + label {
 .success {
   color: green;
 }
-
+.error img,
+.success img {
+  width: 24px;
+  height: 25px;
+}

@@ -100,7 +100,9 @@
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1>Registration Form</h1>
+        <div class="container">
+          <h1 class="title">Registration Form</h1>
+        </div>
       </header>
       <main class="main">
         <div class="container">
@@ -118,7 +120,11 @@
                   required
                 />
                 <label for="name">Name</label>
-                <div class="error"><img src="./assets/images/icons/error.svg" alt="">Non ok!</div>
+                <div class="error">
+                  <!-- <img width="35" height="35"
+                  src="./assets/images/icons/error.svg" alt="">
+                  Lorem ipsum dolor sit amet consectetur. -->
+                </div>
                 <div class="success"></div>
               </div>
               <div class="field">
@@ -142,7 +148,7 @@
                   required
                 />
                 <label for="email">Password</label>
-                <button class="show-hide"></button>
+                <button class="eye"></button>
                 <div class="error"></div>
                 <div class="success"></div>
               </div>
@@ -155,7 +161,7 @@
                   required
                 />
                 <label for="email">Confirm Password</label>
-                <button class="show-hide"></button>
+                <button class="eye"></button>
                 <div class="error"></div>
                 <div class="success"></div>
               </div>
