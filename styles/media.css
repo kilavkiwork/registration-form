@@ -4,3 +4,15 @@
 /* mobile first */
 @media (min-width: 768px) {
 }
+
+@media (max-width: 425px) {
+  :root {
+    --padding: 0.625rem;
+  }
+}
+
+@media (max-width: 375px) {
+  section.hero {
+    justify-content: start;
+  }
+}

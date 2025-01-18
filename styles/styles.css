@@ -7,7 +7,7 @@
   --main-font: 'lexend deca';
   --secondary-font: 'big shoulders display';
   --font-size: 16px;
-  --padding: 20px;
+  --padding: 1rem;
   --container: 1200px;
   --anime: 0.5s, ease;
 }
@@ -98,7 +98,6 @@ button {
   margin: 0 auto;
   width: calc(100% - (var(--padding) * 2));
   max-width: var(--container);
-  border: 3px solid orange;
 }
 
 section.hero {
@@ -109,12 +108,10 @@ section.hero {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 455px;
+  display: grid;
+  gap: 1.25rem;
+  width: clamp(270px, 37.92vw, 455px);
   height: auto;
-  font-weight: 500;
 }
 
 .field {
@@ -124,7 +121,7 @@ form {
 input {
   width: 100%;
   height: 4rem;
-  padding: 0 50px 0 20px;
+  padding: 0 2.25em 0 .75em;
   font-size: 1.5rem;
   line-height: 1.16;
   border: 2px solid var(--grey);
@@ -140,6 +137,7 @@ input:not([type='submit']):focus + label {
   background-color: var(--white);
 }
 input[type='submit'] {
+  padding: .5em;
   font-size: 18px;
   color: var(--white);
   background-color: var(--primary-color);
@@ -166,37 +164,32 @@ label {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translate(-50%, -50%);
+  transform: translate(-25%, -50%);
   width: 36px;
   height: 36px;
   background-image: url('../assets/images/icons/show.svg');
   background-position: center;
   background-repeat: no-repeat;
+  opacity: .25;
 }
-.show .eye {
+.hide .eye {
   background-image: url('../assets/images/icons/hide.svg');
 }
 
-.error,
-.success {
+.status {
   position: absolute;
   top: 50%;
   left: 100%;
-  transform: translate(20px, -50%);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  font-size: 14px;
+  transform: translate(6px, -50%);
+}
+.status img {
+  display: none;
+  width: 24px;
+  height: 25px;
 }
 .error {
   color: red;
 }
 .success {
   color: green;
-}
-.error img,
-.success img {
-  width: 24px;
-  height: 25px;
 }
