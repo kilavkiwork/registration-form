@@ -1,6 +1,6 @@
 // const showPassButton = passwordInput.parentElement.querySelector('.show-hide');
 const fields = document.querySelectorAll('.field');
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('input:not([type="submit"])');
 const passInputs = document.querySelectorAll('input[type="password"]');
 const eyeButtons = document.querySelectorAll('.eye');
 
@@ -8,31 +8,37 @@ const password = document.querySelector('input[name="password"]');
 const confirmPassword = document.querySelector(
   'input[name="confirm-password"]'
 );
+// console.log(inputs);
 
 //
 // validation forms
 const configs = {
   name: {
-    validator: (value) => !!value.trim(),
+    // validator: (value) => !!value.trim(),
+    regexp: new RegExp(/[A-Za-z-_]/),
     err: 'Name is required',
+    validator: (value) => {
+      value.match(this.regexp) && !!value.trim();
+    },
   },
 };
 
 //
-function validateForm(formData) {
-  for (const [key, config] of Object.entries(configs)) {
-    const value = formData[key] || '';
-    if (!config.validator(value)) {
-      console.log(config.err);
+function validateForm(formData, event) {
+  for (const [key, value] of Object.entries(configs)) {
+    // console.log(key, value);
+    if(key === event.target.name) {
+      
     }
   }
 }
 
-const formName = document.querySelector('input[name="name"]');
-console.log(formName);
-formName.addEventListener('blur', () => {
-  validateForm(formName);
-});
+inputs.forEach((input) => {
+  input.addEventListener('blur', (event) => {
+    // console.log(event.target);
+    validateForm(event.target, event)
+  })
+})
 
 //
 // show-hide password and eye
@@ -56,12 +62,16 @@ eyeButtons.forEach((button) => {
 // opacity jumping text
 function setVisibilityLabel(event) {
   const field = event.target.closest('.field');
-  if (event.target.name === 'submit') return;
-  field.querySelector('label').style.opacity = event.target.value === '' ? 1 : 0;
+  // if (event.target.name === 'submit') return;
+
+  field.querySelector('label').style.opacity =
+    event.target.value === '' ? 1 : 0;
 }
 
 inputs.forEach((input) => {
-  input.addEventListener('blur', (event) => setVisibilityLabel(event));
+  input.addEventListener('blur', (event) => {
+    setVisibilityLabel(event);
+  });
 });
 
 //
