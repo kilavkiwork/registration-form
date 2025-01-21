@@ -1,4 +1,3 @@
-// const showPassButton = passwordInput.parentElement.querySelector('.show-hide');
 const fields = document.querySelectorAll('.field');
 const inputs = document.querySelectorAll('input:not([type="submit"])');
 const passInputs = document.querySelectorAll('input[type="password"]');
@@ -64,7 +63,8 @@ function setStatus(isValid, event) {
     event.target.style.setProperty('border-color', 'green');
     label.textContent = '';
   } else {
-    label.textContent = validateForm[inputName]?.['errorMsg'] || 'Invalid input!';
+    label.textContent =
+      validateForm[inputName]?.['errorMsg'] || 'Invalid input!';
     label.style.setProperty('color', 'red');
     event.target.style.setProperty('border-color', 'red');
   }
@@ -75,14 +75,14 @@ let passwordValue = '';
 // validation forms
 inputs.forEach((input) => {
   input.addEventListener('blur', (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     let isValid = false;
-    
-    if(name === 'password') {
+
+    if (name === 'password') {
       passwordValue = value;
       isValid = validateForm['password'].validate(value);
     } else if (name === 'confirm-password') {
-      isValid = validateForm['confirmPassword'].validate(value, passwordValue)
+      isValid = validateForm['confirmPassword'].validate(value, passwordValue);
     } else {
       isValid = validateForm[name].validate(value) || false;
     }
